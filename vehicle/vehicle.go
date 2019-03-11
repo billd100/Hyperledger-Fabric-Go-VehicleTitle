@@ -106,7 +106,7 @@ func (s *SmartContract) createVehicle(APIstub shim.ChaincodeStubInterface, args 
 		titleResponse := APIstub.InvokeChaincode("titlecc", [][]byte{[]byte("queryTitleByVIN"), []byte(vin)}, "")
 		titlePayload := titleResponse.GetPayload()
 		// View errors/debug with `fmt.Printf("%s", titleResponse.GetPayload())``
-		titlePayload = titlePayload[1:len(titlePayload) - 1])
+		titlePayload = titlePayload[1:len(titlePayload) - 1]
 		if len(titlePayload) != 0 {
 			title := make(map[string]interface{})
 			err := json.Unmarshal(titlePayload, &title)
